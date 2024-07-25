@@ -1,0 +1,15 @@
+/* .layout-basic{
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+} */
+.layout-body{
+    height: calc(100% -20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-component{
+    min-height: calc( 100dvh - 236px);
+    margin: 30px 5dvw 0 5dvw;
+}

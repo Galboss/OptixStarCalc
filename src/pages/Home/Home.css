@@ -1,0 +1,61 @@
+.card-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.my-card {
+    width: 100%;
+    background-color: #4a4a4a ;
+    color: white;
+    flex: 1 1 0;
+    max-height: 50dvh;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+}
+.my0.form-control:focus{
+    background-color: #fff;
+}
+
+.my-card input{
+    background-color: #4a4a4a;
+}
+
+#card-1 {
+    flex: 2.5 1 0;
+}
+
+#card-2 {
+    flex: 4 1 0 !important;
+    max-height: none;
+    height: calc(100dvh - 240px) !important;
+
+}
+
+#search {
+    margin-top: 50px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547 !important;
+        background-color: #eee !important;
+    }
+
+    .my-card {
+        background-color: white;
+        color: black;
+    }
+
+    .my-card input{
+        background-color: #fff;
+    }
+    .form-control:focus{
+        background-color: #fff;
+    }
+
+}
