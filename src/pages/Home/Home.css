@@ -13,9 +13,9 @@
     max-height: 50dvh;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.04);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.04);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.04);
 }
 .my0.form-control:focus{
     background-color: #fff;
@@ -58,4 +58,10 @@
         background-color: #fff;
     }
 
+}
+
+@media screen and (max-width: 1500px) {
+    .card-layout{
+        flex-direction: column;
+    }
 }

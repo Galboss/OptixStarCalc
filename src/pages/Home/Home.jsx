@@ -1,10 +1,24 @@
 import React from "react";
-import { useState, useEffect,useRef } from "react";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faUsers, faGaugeHigh, faCalculator } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect, useRef } from "react";
+import InputGroup from "../../components/input/InputGroup";
 import "./Home.css"
 
 function Home() {
 
-    let splitBand = useRef(0);
+    let split = useRef(null);
+    let users = useRef(null);
+    let bandwidth = useRef(null);
+    const [result, setResult] = useState(undefined);
+    function getData() {
+        let data = {
+            split: split.current.value,
+            users: users.current.value,
+            bandwidth: bandwidth.current.value
+        };
+        setResult(data);
+    }
 
     return (
         <>
@@ -13,31 +27,13 @@ function Home() {
                 <div className="my-card" id="card-1">
                     <h3>Entry the data</h3>
                     <hr />
-                    <div className="input-group mb-3">
-                        <span className="input-group-text">@</span>
-                        <div className="form-floating">
-                            <input className="form-control" id="splitBand" type="number" placeholder="Split ratio per bandwidth" />
-                            <label >Split ratio per bandwidth</label>
-                        </div>
-                    </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text">@</span>
-                        <div className="form-floating">
-                            <input className="form-control" id="finalUsers" ref={splitBand} type="number" placeholder="Final users" />
-                            <label>Final users</label>
-                        </div>
-                    </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text">@</span>
-                        <div className="form-floating">
-                            <input className="form-control" id="finalUsers" type="number" placeholder="Bandwidth" />
-                            <label>Bandwidth</label>
-                        </div>
-                    </div>
+                    <InputGroup icon={faCaretRight} label="Split ratio per bandwidth" type="number" refId={split} />
+                    <InputGroup icon={faUsers} label="Quantity of final users" type="number" refId={users} />
+                    <InputGroup icon={faGaugeHigh} label="Bandwidth" type="number" refId={bandwidth} />
                     <hr />
                     <div className="d-grid" id="search">
-                        <button className="btn btn-lg btn-outline-danger">
-                            Calculate
+                        <button className="btn btn-lg btn-outline-danger" onClick={getData}>
+                            <Icon icon={faCalculator} />&nbsp;&nbsp;Calculate
                         </button>
                     </div>
 
@@ -46,7 +42,7 @@ function Home() {
 
 
                 <div className="my-card" id="card-2">
-
+                    {result ? JSON.stringify(result) : ""}
                 </div>
 
 

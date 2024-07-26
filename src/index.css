@@ -22,13 +22,18 @@ body {
   color: #fff;
 }
 
-
+.input-decorator{
+  min-width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547 !important;
-    background-color: #eee !important;
+    background-color: #fbfbfb !important;
   }
 
   
