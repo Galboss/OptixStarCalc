@@ -1,9 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faUsers, faGaugeHigh, faCalculator } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight, faUsers, faGaugeHigh, faCalculator, faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import InputGroup from "../../components/input/InputGroup";
 import "./Home.css"
+import Result_Display from "../../components/result_display/Result_Display";
+import History from "../../components/history/History";
 
 function Home() {
 
@@ -25,7 +27,10 @@ function Home() {
             <div className="card-layout">
 
                 <div className="my-card" id="card-1">
-                    <h3>Entry the data</h3>
+                    <h3>
+                        <Icon icon={faDatabase}/>&nbsp;
+                        Enter the values
+                    </h3>
                     <hr />
                     <InputGroup icon={faCaretRight} label="Split ratio per bandwidth" type="number" refId={split} />
                     <InputGroup icon={faUsers} label="Quantity of final users" type="number" refId={users} />
@@ -43,12 +48,13 @@ function Home() {
 
                 <div className="my-card" id="card-2">
                     {result ? JSON.stringify(result) : ""}
+                    <Result_Display/>
                 </div>
 
 
 
                 <div className="my-card" id="card-3">
-                    <p>Card demo</p>
+                    <History name={"P613E"} img={"./img/Test.png"}/>
                 </div>
             </div>
         </>

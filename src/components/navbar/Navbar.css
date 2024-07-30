@@ -1,3 +1,45 @@
-.text-white{
-    color:white !important;
+#navbar {
+    background-color: #4a4a4a;
+    border-bottom: 2px solid red;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 22pt !important;
+}
+
+#navbar a,
+#navbar .navbar-brand,
+#navbar .navlink {
+    color: white !important;
+}
+
+#X {
+    color:red !important;
+    -webkit-text-fill-color: red;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke: 0.8px #ffffff88;
+
+}
+
+@media (prefers-color-scheme: light) {
+
+    #navbar {
+        background-color: #fbfbfb;
+        border-bottom: 2px solid red;
+    }
+
+    .navbar-brand {
+        color: black !important;
+    }
+
+    #navbar a,
+    #navbar .navbar-brand,
+    #navbar .navlink {
+        color: black !important;
+    }
 }

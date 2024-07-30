@@ -5,7 +5,9 @@ function Footer() {
     return (
         <>
             <footer>
-                <h1>Hello world</h1>
+                <div className="container">
+                    <h1>Hello world</h1>
+                </div>
             </footer>
         </>
     )

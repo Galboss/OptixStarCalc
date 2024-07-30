@@ -1,0 +1,36 @@
+#result{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+#img-result{
+    max-width: 300px;
+}
+
+.image-border{
+    border: 1px solid black;
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: inset 1px 1px 25px 5px #00000022;
+}
+#description{
+    margin-top: 30px;
+}
+
+@media screen and (max-width:1500px) {
+    #result{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #img-result{
+        max-width: 50%;
+        height: 250px;
+    }
+}

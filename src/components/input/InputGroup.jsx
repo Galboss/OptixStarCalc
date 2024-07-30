@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-
+import "./InputGroup.css";
 function InputGroup({ label, icon, type, refId }) {
     return (
         <>
