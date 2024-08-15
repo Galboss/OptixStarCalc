@@ -12,6 +12,10 @@
     font-size: 22pt !important;
 }
 
+.nav-link{
+    font-size: 14pt;
+}
+
 #navbar a,
 #navbar .navbar-brand,
 #navbar .navlink {

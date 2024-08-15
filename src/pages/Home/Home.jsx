@@ -54,7 +54,7 @@ function Home() {
 
 
                 <div className="my-card" id="card-3">
-                    <History name={"P613E"} img={"./img/Test.png"}/>
+                    <History />
                 </div>
             </div>
         </>

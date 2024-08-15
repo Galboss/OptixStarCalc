@@ -4,14 +4,16 @@ import "./History_Item.css";
 function History_Item({ name, img }) {
     return (<>
         {(name && img) ?
-            <div className="history-item-container">
-                <div className="img-container-history">
-                    <img src={img} alt="" />
+            <a href="#" className="history-item" tabIndex="0" draggable="false">
+                <div className="history-item-container" tabIndex="0">
+                    <div className="img-container-history">
+                        <img src={img} alt="" draggable="false"/>
+                    </div>
+                    <div>
+                        <p>{name}</p>
+                    </div>
                 </div>
-                <div>
-                    <p>{name}</p>
-                </div>
-            </div>
+            </a>
             : <></>}
     </>);
 }

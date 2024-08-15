@@ -11,7 +11,7 @@ function History({}){
             History
         </h3>
         <hr />
-        <History_Item name={"P613E"} img={"./img/Test.png"}/>
+        <History_Item name={"P613E"} img={"./img/test.png"}/>
     </>)
 }
 
