@@ -1,0 +1,90 @@
+[
+    {
+        "name": "EA5801E-FP16-H1",
+        "final users": 1024,
+        "image": "",
+        "characteristics": [
+            "Modular: no",
+            "GPON ports: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Uplink ports: 4 ports",
+            "Switching Capacity: 140 Gbit/s",
+            "Supported technologies: GPON"
+        ],
+        "description": "This device is a perfect choice for medium and large SME and small rural towns for ISP business that allow to connect 1024 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5801E-GP16-H2",
+        "final users": 1024,
+        "image": "",
+        "characteristics": [
+            "Modular: no",
+            "GPON ports: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Uplink ports: 4 ports",
+            "Switching Capacity: 140 Gbit/s",
+            "Supported technologies: GPON"
+        ],
+        "description": "This device is a perfect choice for medium and large SME and small rural towns for ISP business that allow to connect 1024 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5800-X2",
+        "final users": 2048,
+        "image": "",
+        "characteristics": [
+            "Modular: yes",
+            "GPON ports per service board: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Modular control boards: 2",
+            "Switching Capacity: 248 Gbit/s",
+            "Max service board: 2 service board",
+            "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
+        ],
+        "description": "This device is a perfect choice for medium and large SME that allow to connect 2048 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5800-X7",
+        "final users": 7168,
+        "image": "",
+        "characteristics": [
+            "Modular: yes",
+            "GPON ports per service board: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Modular control boards: 2",
+            "Switching Capacity: 8 Gbit/s",
+            "Max service board: 7 service board",
+            "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
+        ],
+        "description": "This device is a perfect choice for large SME or small ISP business that allow to connect 7168 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5800-X15",
+        "final users": 15360,
+        "image": "",
+        "characteristics": [
+            "Modular: yes",
+            "GPON ports per service board: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Modular control boards: 2",
+            "Switching Capacity: 8 Gbit/s",
+            "Max service board: 15 service board",
+            "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
+        ],
+        "description": "This device is a perfect choice for ultra large SME or ISP business that allow to connect 15360 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5800-X17",
+        "final users": 17408,
+        "image": "",
+        "characteristics": [
+            "Modular: yes",
+            "GPON ports per service board: 16 ports",
+            "Modular power supply: 2 AC/DC",
+            "Modular control boards: 2",
+            "Switching Capacity: 8 Gbit/s",
+            "Max service board: 17 service board",
+            "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
+        ],
+        "description": "This device is a perfect choice for ultra large SME or ISP business that allow to connect 17408 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
+    }
+]

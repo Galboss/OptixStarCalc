@@ -12,7 +12,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+html{
+  scrollbar-width: thin;
+  scrollbar-color: #000000ff;
+}
+html::-webkit-scrollbar-track {
+  color:#00000000;
+  
+}
 body {
   margin: 0;
   display: flex;
