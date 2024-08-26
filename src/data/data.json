@@ -1,14 +1,42 @@
 [
     {
+        "name": "EA5801E-GP04-H2",
+        "final users": 256,
+        "image": "",
+        "characteristics": [
+            "Modular: No",
+            "GPON ports: 4 ports",
+            "Modular power supply: 2 AC/DC",
+            "Uplink ports: 4 ports",
+            "Switching Capacity: 95GB Gbit/s",
+            "Supported technologies: GPON"
+        ],
+        "description": "This device is a perfect choice for small SME that allow to connect 256 Optical access devices, or have access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
+        "name": "EA5801E-GP08-H2",
+        "final users": 512,
+        "image": "",
+        "characteristics": [
+            "Modular: No",
+            "GPON ports: 8 ports",
+            "Modular power supply: 2 AC/DC",
+            "Uplink ports: 4 ports",
+            "Switching Capacity: 110GB Gbit/s",
+            "Supported technologies: GPON"
+        ],
+        "description": "This device is a perfect choice for small and middle SME that allow to connect 256 Optical access devices, or have access points connected directly to the GPON Network with a high bandwidth."
+    },
+    {
         "name": "EA5801E-FP16-H1",
         "final users": 1024,
         "image": "",
         "characteristics": [
-            "Modular: no",
-            "GPON ports: 16 ports",
+            "Modular: No",
+            "PON ports: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Uplink ports: 4 ports",
-            "Switching Capacity: 140 Gbit/s",
+            "Switching Capacity: 460 Gbit/s",
             "Supported technologies: GPON"
         ],
         "description": "This device is a perfect choice for medium and large SME and small rural towns for ISP business that allow to connect 1024 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
@@ -18,7 +46,7 @@
         "final users": 1024,
         "image": "",
         "characteristics": [
-            "Modular: no",
+            "Modular: No",
             "GPON ports: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Uplink ports: 4 ports",
@@ -32,7 +60,7 @@
         "final users": 2048,
         "image": "",
         "characteristics": [
-            "Modular: yes",
+            "Modular: Yes",
             "GPON ports per service board: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Modular control boards: 2",
@@ -47,11 +75,11 @@
         "final users": 7168,
         "image": "",
         "characteristics": [
-            "Modular: yes",
+            "Modular: Yes",
             "GPON ports per service board: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Modular control boards: 2",
-            "Switching Capacity: 8 Gbit/s",
+            "Switching Capacity: 8 Tbit/s",
             "Max service board: 7 service board",
             "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
         ],
@@ -62,11 +90,11 @@
         "final users": 15360,
         "image": "",
         "characteristics": [
-            "Modular: yes",
+            "Modular: Yes",
             "GPON ports per service board: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Modular control boards: 2",
-            "Switching Capacity: 8 Gbit/s",
+            "Switching Capacity: 8 Tbit/s",
             "Max service board: 15 service board",
             "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
         ],
@@ -77,11 +105,11 @@
         "final users": 17408,
         "image": "",
         "characteristics": [
-            "Modular: yes",
+            "Modular: Yes",
             "GPON ports per service board: 16 ports",
             "Modular power supply: 2 AC/DC",
             "Modular control boards: 2",
-            "Switching Capacity: 8 Gbit/s",
+            "Switching Capacity: 8 Tbit/s",
             "Max service board: 17 service board",
             "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
         ],

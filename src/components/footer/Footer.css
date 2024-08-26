@@ -9,11 +9,12 @@ footer{
     position: sticky;
     top:100%;
     margin-top: 50px;
+    border-top: 2px solid red;
 }
 
 @media (prefers-color-scheme: light) {
     footer {
-        background-color: black;
-        color: white;
+        background-color: #fbfbfb;
+        color: black;
       }
 }

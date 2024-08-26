@@ -7,11 +7,14 @@ import "./Home.css"
 import Result_Display from "../../components/result_display/Result_Display";
 import History from "../../components/history/History";
 
+import DB from "../../data/data.json"
+
 function Home() {
 
     let split = useRef(null);
     let users = useRef(null);
     let bandwidth = useRef(null);
+    const [data, setData] = useState(undefined);
     const [result, setResult] = useState(undefined);
     function getData() {
         let data = {
@@ -19,7 +22,21 @@ function Home() {
             users: users.current.value,
             bandwidth: bandwidth.current.value
         };
-        setResult(data);
+        setData(data);
+    }
+
+    useEffect(()=>{
+        debugger;
+        GetEquipment();
+    },[data])
+
+    function GetEquipment(){
+        for(let i = 0; i<DB.length; i++){
+            if(users.current.value<=DB[i]["final users"]){
+                setResult(DB[i])
+                return
+            }
+        }
     }
 
     return (
@@ -47,8 +64,8 @@ function Home() {
 
 
                 <div className="my-card" id="card-2">
-                    {result ? JSON.stringify(result) : ""}
-                    <Result_Display/>
+                    {/* {result ? JSON.stringify(result) : ""} */}
+                    <Result_Display result={result}/>
                 </div>
 
 
