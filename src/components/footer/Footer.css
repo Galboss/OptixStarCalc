@@ -20,6 +20,10 @@ footer{
     gap: 50px;
 }
 
+.footer-description{
+    max-width: 300px;
+}
+
 @media (prefers-color-scheme: light) {
     footer {
         background-color: #fbfbfb;

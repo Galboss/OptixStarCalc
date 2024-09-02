@@ -21,7 +21,9 @@ function Footer() {
                             <h2>Bryan Chacón™ &nbsp;{year.getFullYear()}</h2>
                         </div>
                         <div>
-                            All the information belongs to Huawei Enterprise
+                            <p className="footer-description">
+                                All technical specifications of the devices belongs to Huawei.
+                            </p>
                         </div>
                     </div>
                 </div>
