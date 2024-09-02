@@ -52,7 +52,7 @@
             "Modular control boards: 2",
             "Switching Capacity: 248 Gbit/s",
             "Max service board: 2 service board",
-            "Supported technologies: GPON,XGSPON,FlexPon,GPON/Combo. Depending of the configured service board."
+            "Supported technologies: GPON, XGSPON, FlexPon, GPON/Combo. Depending of the configured service board."
         ],
         "description": "This device is a perfect choice for medium and large SME that allow to connect 2048 Optical access devices, or have a lot access points connected directly to the GPON Network with a high bandwidth."
     },

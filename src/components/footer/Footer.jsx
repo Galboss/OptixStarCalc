@@ -10,7 +10,7 @@ function Footer() {
                 <div className="container-fluid">
                     <div className="flex-container">
                         <div>
-                            <a>
+                            <a href="https://www.linkedin.com/in/bryan-j-chac%C3%B3n-reyes-aa118b228/">
                                 <h3>
                                     <Icon icon={faLinkedin} />&nbsp;Bryan José Chacón Reyes
                                 </h3>

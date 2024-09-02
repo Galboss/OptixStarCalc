@@ -43,7 +43,7 @@
     #result {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 0.5fr 1fr;
         gap: 15px;
     }
 }
@@ -53,6 +53,10 @@
         max-width: 50%;
     }
     .image-border{
-        min-width: 250px;
+        min-width: 250px !important;
+        max-width: 250px !important;
+    }
+    .result-cell li{
+        max-width: 250px;
     }
 }
