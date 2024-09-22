@@ -6,7 +6,7 @@ import { useState } from "react";
 import "./Result_Display.css";
 
 function Result_Display({ result, uplink, maxSpeed, 
-    usedPorts, expansionPercentage, accessPoint }) {
+    usedPorts, expansionPercentage, accessPoint, worstScenario}) {
 
 
 
@@ -52,7 +52,7 @@ function Result_Display({ result, uplink, maxSpeed,
                 </div>
                 <div className="result-cell">
                     <h6><Icon icon={faUser} />&nbsp;Max speed in worst scenario</h6>
-                    <p>{maxSpeed} Mbps</p>
+                    <p>{worstScenario} Mbps</p>
                 </div>
                 <div className="result-cell">
                     <h6><Icon icon={faNetworkWired} />&nbsp;Service ports used</h6>

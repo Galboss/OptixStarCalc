@@ -21,6 +21,7 @@ function Home() {
     const [result, setResult] = useState(undefined);
     const [expansionPercentage,setExpansionPercentage] = useState(null);
     const [accessPoint, setAccessPoint] = useState(null);
+    const [worstScenario, setWorstScenario] = useState(null);
     function getData() {
         if(split.current.value==0)
             return
@@ -52,9 +53,10 @@ function Home() {
                     setResult(DB[i]);
                     let usedP=Math.ceil(data.users/SPratio)
                     setUsedPorts(usedP);
-                    let percentageExpansion=Math.ceil(100-(usedP*100)/ponPorts);
+                    let percentageExpansion=Math.ceil(100-((usedP*100)/ponPorts));
                     setExpansionPercentage(percentageExpansion);
-                    setAccessPoint(expansionPercentage>45?true:false);
+                    setAccessPoint(expansionPercentage>75?true:false);
+                    setWorstScenario(CalculateWorstScenario(split));
                     return;
                 }
             }
@@ -81,6 +83,11 @@ function Home() {
                 return 0;
         }
             
+    }
+    function CalculateWorstScenario(split){
+        let splitr = split;
+        let worstScenario = 2500/splitr;
+        return worstScenario;
     }
 
     return (
@@ -121,7 +128,8 @@ function Home() {
                         <Result_Display result={result} uplink={uplink} 
                         maxSpeed={data.bandwidth} usedPorts={usedPorts} 
                         expansionPercentage={expansionPercentage}
-                        accessPoint={accessPoint}/>
+                        accessPoint={accessPoint}
+                        worstScenario={worstScenario}/>
                     </>
                     :<>
                     </>}

@@ -2,7 +2,7 @@
     "name": "OptiXstar Optical Calculator",
     "short_name": "OptiXstar calculator",
     "description": "Optical calculator that ensures that you design correctly your POL",
-    "start_url": "https://optixstarcalc.onrender.com/",
+    "start_url": "https://optixstarcalc.onrender.com",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ff0000",
