@@ -9,16 +9,24 @@ function Footer() {
             <footer>
                 <div className="container-fluid">
                     <div className="flex-container">
-                        <div>
+                        <div id="namesLi">
                             <a href="https://www.linkedin.com/in/bryan-j-chac%C3%B3n-reyes-aa118b228/">
                                 <h3>
                                     <Icon icon={faLinkedin} />&nbsp;Bryan José Chacón Reyes
                                 </h3>
                             </a>
                             <h5>Software Developer</h5>
+                            <h5>Optical Product Manager</h5>
+
                         </div>
                         <div>
-                            <h2>Bryan Chacón™ &nbsp;{year.getFullYear()}</h2>
+                            <a href="https://www.linkedin.com/in/bryan-j-chac%C3%B3n-reyes-aa118b228/">
+                                <h3>
+                                    <Icon icon={faLinkedin} />&nbsp;Joshua Llorente Rodríguez
+                                </h3>
+                            </a>
+                            <h5>Software Developer</h5>
+                            <h5>Optical Solution Architect</h5>
                         </div>
                         <div>
                             <p className="footer-description">
@@ -27,6 +35,10 @@ function Footer() {
                         </div>
                     </div>
                 </div>
+                <div className="sub-footer ">
+                        <h5>Bryan Chacón™ &nbsp;{year.getFullYear()} </h5>
+                        <a href="/documentation/use-terms">Use terms</a>
+                    </div>
             </footer>
         </>
     )
