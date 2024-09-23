@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css"
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
 function Footer() {
     let year = new Date();
     return (
@@ -37,7 +38,7 @@ function Footer() {
                 </div>
                 <div className="sub-footer ">
                         <h5>Bryan Chacón™ &nbsp;{year.getFullYear()} </h5>
-                        <a href="/documentation/use-terms">Use terms</a>
+                        <NavLink to="/documentation/use-terms">Use terms</NavLink>
                     </div>
             </footer>
         </>
