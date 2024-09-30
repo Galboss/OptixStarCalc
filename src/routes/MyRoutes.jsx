@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import DocLayout from "../layout/doc/DocLayout";
 import UseTerms from "../pages/Documentation/use_terms/UseTerms";
+
 function MyRoutes(){
     return(
         <Routes>

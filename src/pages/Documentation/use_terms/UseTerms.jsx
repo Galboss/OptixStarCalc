@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
-import useMarkdown from "../../../tools/hooks/useMarkdown";
+import useMarkdown from "../../../tools/hooks/markdown/useMarkdown";
 import md from "../../../docs/useterms.md"
 
 function UseTerms() {
