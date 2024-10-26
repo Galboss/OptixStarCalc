@@ -9,25 +9,32 @@ import Result_Display from "../../components/result_display/Result_Display";
 import History from "../../components/history/History";
 
 import DB from "../../data/data.json"
+import { json } from "react-router-dom";
 
 function Home() {
 
+    //#region REFERENCES
     let split = useRef(null);
     let users = useRef(null);
     let bandwidth = useRef(null);
-    const [uplink,setUplink] = useState(null);
-    const [usedPorts,setUsedPorts] = useState(null);
+    //#endregion
+    //#region USE STATES
+    const [uplink, setUplink] = useState(null);
+    const [usedPorts, setUsedPorts] = useState(null);
     const [data, setData] = useState(undefined);
     const [result, setResult] = useState(undefined);
-    const [expansionPercentage,setExpansionPercentage] = useState(null);
+    const [expansionPercentage, setExpansionPercentage] = useState(null);
     const [accessPoint, setAccessPoint] = useState(null);
     const [worstScenario, setWorstScenario] = useState(null);
+    const [storedData,setStoredData] = useState(null);
+    //#endregion
+    //#region Get Values from Form
     function getData() {
-        if(split.current.value==0)
+        if (split.current.value == 0)
             return
-        if(users.current.value<=0||users.current.value>=17408)
+        if (users.current.value <= 0 || users.current.value >= 17408)
             return
-        if(bandwidth.current.value<=0||bandwidth>=10000)
+        if (bandwidth.current.value <= 0 || bandwidth >= 10000)
             return
         let data = {
             split: split.current.value,
@@ -36,41 +43,46 @@ function Home() {
         };
         setData(data);
     }
-    useEffect(()=>{
-        if(data!==undefined){
+
+    useEffect(() => {
+        if (data !== undefined) {
             GetEquipment();
             QuantityUplinks();
         }
-    },[data])
-
-    function GetEquipment(){
+    }, [data])
+    //#endregion
+    //#region Search optimum equipment for the solution
+    function GetEquipment() {
         debugger
-        for(let i = 0; i<DB.length; i++){
-            if(users.current.value<=DB[i]["final users"]){
-                let ponPorts = DB[i]["final users"]/64;
+        for (let i = 0; i < DB.length; i++) {
+            if (users.current.value <= DB[i]["final users"]) {
+                let ponPorts = DB[i]["final users"] / 64;
                 let SPratio = UsersPerSplit(data.split);
-                if(ponPorts*SPratio>=data.users){
+                if (ponPorts * SPratio >= data.users) {
                     setResult(DB[i]);
-                    let usedP=Math.ceil(data.users/SPratio)
+                    let usedP = Math.ceil(data.users / SPratio)
                     setUsedPorts(usedP);
-                    let percentageExpansion=Math.ceil(100-((usedP*100)/ponPorts));
+                    let percentageExpansion = Math.ceil(100 - ((usedP * 100) / ponPorts));
                     setExpansionPercentage(percentageExpansion);
-                    setAccessPoint(expansionPercentage>75?true:false);
+                    setAccessPoint(expansionPercentage > 75 ? true : false);
                     setWorstScenario(CalculateWorstScenario(split));
                     return;
                 }
             }
         }
     }
-    function QuantityUplinks(){
-        if(!data)
+
+    //#endregion
+    //#region Math for page
+    function QuantityUplinks() {
+        if (!data)
             return
-        let result = (data.users*data.bandwidth)*data.split;
-        result = Math.ceil(result/10000)
+        let result = (data.users * data.bandwidth) * data.split;
+        result = Math.ceil(result / 10000)
         setUplink(result)
     }
-    function UsersPerSplit(split){
-        switch(split){
+    function UsersPerSplit(split) {
+        switch (split) {
             case "0.125":
                 return 8;
             case "0.0625":
@@ -82,21 +94,57 @@ function Home() {
             default:
                 return 0;
         }
-            
+
     }
-    function CalculateWorstScenario(split){
+    function CalculateWorstScenario(split) {
         let splitr = split;
-        let worstScenario = 2500/splitr;
+        let worstScenario = 2500 / splitr;
         return worstScenario;
     }
-
+    //#endregion
+    //#region LocalStorage Management
+    async function CheckLocalStorage(){
+        let localData = await localStorage.getItem("history");
+        if(localData===null||localData===""||localData.length===0)
+            setStoredData([]);
+        else
+            setStoredData(JSON.parse(localData));
+    }
+    async function SaveItemLocalStorage(){
+        let stored = await localStorage.getItem("history");
+        stored = JSON.parse(stored);
+        let toStore = data;
+        toStore.result = result;
+        if(stored.length>=4){
+            stored.pop()
+            stored.push(toStore);
+        }else{
+            stored.push(toStore);
+        }
+        setStoredData(stored);
+    }
+    useEffect(()=>{
+        let isCanceled = false;
+        const checkLocalStorage = async()=>{
+            await CheckLocalStorage();
+            if(isCanceled){
+                console.log("Se canceló la ejecución de la función.");
+            }
+        }
+        checkLocalStorage();
+        return()=>{
+            isCanceled = true;
+        }
+    },[])
+    
+    //#endregion
     return (
         <>
             <div className="card-layout">
 
                 <div className="my-card" id="card-1">
                     <h3>
-                        <Icon icon={faDatabase}/>&nbsp;
+                        <Icon icon={faDatabase} />&nbsp;
                         Enter the values
                     </h3>
                     <hr />
@@ -107,9 +155,9 @@ function Home() {
                         <option value="0.015625">1:64</option>
                     </InputGroupSelect>
                     <InputGroup icon={faUsers} label="Quantity of final users"
-                     type="number" refId={users} step="1" min="0" max="17408"/>
-                    <InputGroup icon={faGaugeHigh} label="Bandwidth per user (Mbps)" 
-                    type="number" refId={bandwidth}  step="10" max="10000" min="0"/>
+                        type="number" refId={users} step="1" min="0" max="17408" />
+                    <InputGroup icon={faGaugeHigh} label="Bandwidth per user (Mbps)"
+                        type="number" refId={bandwidth} step="10" max="10000" min="0" />
                     <hr />
                     <div className="d-grid" id="search">
                         <button className="btn btn-lg btn-outline-danger" onClick={getData}>
@@ -123,22 +171,22 @@ function Home() {
 
                 <div className="my-card" id="card-2">
                     {/* {result ? JSON.stringify(result) : ""} */}
-                    {data!=null||data!=undefined?
-                    <>
-                        <Result_Display result={result} uplink={uplink} 
-                        maxSpeed={data.bandwidth} usedPorts={usedPorts} 
-                        expansionPercentage={expansionPercentage}
-                        accessPoint={accessPoint}
-                        worstScenario={worstScenario}/>
-                    </>
-                    :<>
-                    </>}
+                    {data != null || data != undefined ?
+                        <>
+                            <Result_Display result={result} uplink={uplink}
+                                maxSpeed={data.bandwidth} usedPorts={usedPorts}
+                                expansionPercentage={expansionPercentage}
+                                accessPoint={accessPoint}
+                                worstScenario={worstScenario} />
+                        </>
+                        : <>
+                        </>}
                 </div>
 
 
 
                 <div className="my-card" id="card-3">
-                    <History />
+                    <History StoredItems={storedData}/>
                 </div>
             </div>
         </>

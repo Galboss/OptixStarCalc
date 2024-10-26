@@ -4,7 +4,7 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import History_Item from "../history_item/History_Item";
 
-function History({}){
+function History({StoredItems}){
     return(<>
         <h3>
             <Icon icon={faClock}/>&nbsp;
