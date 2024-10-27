@@ -4,14 +4,21 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import History_Item from "../history_item/History_Item";
 
-function History({StoredItems}){
-    return(<>
+function History({ StoredItems, historyControl}) {
+    return (<>
         <h3>
-            <Icon icon={faClock}/>&nbsp;
+            <Icon icon={faClock} />&nbsp;
             History
         </h3>
         <hr />
-        <History_Item name={"P613E"} img={"./img/test.png"}/>
+        {StoredItems ? (
+            StoredItems.map((element, index) => (
+                <History_Item historyItem={element} key={index} setItem={historyControl} />
+            ))
+        ) : (
+            <></>
+        )}
+        {/* <History_Item name={"P613E"} img={"./img/test.png"}/> */}
     </>)
 }
 

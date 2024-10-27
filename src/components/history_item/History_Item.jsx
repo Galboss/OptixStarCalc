@@ -1,19 +1,19 @@
 import React from "react";
 import "./History_Item.css";
 
-function History_Item({ name, img }) {
+function History_Item({historyItem,setItem}) {
     return (<>
-        {(name && img) ?
-            <a href="#" className="history-item" tabIndex="0" draggable="false">
+        {(historyItem&&historyItem.result) ?
+            <div className="history-item" tabIndex="0" draggable="false" onClick={()=>setItem(historyItem)}>
                 <div className="history-item-container" tabIndex="0">
                     <div className="img-container-history">
-                        <img src={img} alt="" draggable="false"/>
+                        <img src={historyItem.result.image} alt="" draggable="false"/>
                     </div>
                     <div>
-                        <p>{name}</p>
+                        <p>{historyItem.result.name}</p>
                     </div>
                 </div>
-            </a>
+            </div>
             : <></>}
     </>);
 }

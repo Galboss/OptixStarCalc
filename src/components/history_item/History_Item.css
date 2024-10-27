@@ -8,10 +8,11 @@
     justify-items: flex-start;
     padding: 0 15px;
     gap: 10px;
+    cursor: pointer;
 }
 
 .img-container-history{
-    border-radius: 15px;
+    border-radius: 5%;
     margin: 15px 0;
     box-shadow: inset 1px 1px 25px 5px #00000022;
 }
@@ -21,8 +22,8 @@
 }
 
 .history-item-container img{
-    width: 100px;
-    height: 50px;
+    max-width: 100px;
+    max-height: 30px;
 }
 
 .history-item{
@@ -36,6 +37,13 @@
 
 .history-item-container:hover .img-container-history{
     box-shadow: inset 1px 1px 25px 5px #ffffffdd;
+}
+
+.img-container-history{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
 }
 
 @media (prefers-color-scheme: light){

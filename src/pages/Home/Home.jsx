@@ -17,6 +17,7 @@ function Home() {
     let split = useRef(null);
     let users = useRef(null);
     let bandwidth = useRef(null);
+    let flagToStore = useRef(false);
     //#endregion
     //#region USE STATES
     const [uplink, setUplink] = useState(null);
@@ -36,6 +37,11 @@ function Home() {
             return
         if (bandwidth.current.value <= 0 || bandwidth >= 10000)
             return
+        debugger;
+        if(flagToStore.current&&result){
+            SaveItemLocalStorage();
+            flagToStore.current=false;
+        }
         let data = {
             split: split.current.value,
             users: users.current.value,
@@ -46,14 +52,17 @@ function Home() {
 
     useEffect(() => {
         if (data !== undefined) {
-            GetEquipment();
+            const demo = async ()=>{
+                await GetEquipment();
+            }
+            demo();
             QuantityUplinks();
         }
+        
     }, [data])
     //#endregion
     //#region Search optimum equipment for the solution
-    function GetEquipment() {
-        debugger
+    async function GetEquipment() {
         for (let i = 0; i < DB.length; i++) {
             if (users.current.value <= DB[i]["final users"]) {
                 let ponPorts = DB[i]["final users"] / 64;
@@ -113,15 +122,19 @@ function Home() {
     async function SaveItemLocalStorage(){
         let stored = await localStorage.getItem("history");
         stored = JSON.parse(stored);
+        stored = stored?stored:[];
         let toStore = data;
+        if(!result)
+            return;
         toStore.result = result;
         if(stored.length>=4){
-            stored.pop()
-            stored.push(toStore);
+            stored.pop();
+            stored=[toStore].concat(stored);
         }else{
             stored.push(toStore);
         }
         setStoredData(stored);
+        await localStorage.setItem("history",JSON.stringify(stored));
     }
     useEffect(()=>{
         let isCanceled = false;
@@ -136,6 +149,16 @@ function Home() {
             isCanceled = true;
         }
     },[])
+
+    function viewPreviousResult(historyItem){
+        setHistoryForm(historyItem);
+        getData();
+    }
+    function setHistoryForm(historyItem){
+        split.current.value = historyItem.split;
+        users.current.value = historyItem.users;
+        bandwidth.current.value = historyItem.bandwidth;
+    }
     
     //#endregion
     return (
@@ -160,7 +183,10 @@ function Home() {
                         type="number" refId={bandwidth} step="10" max="10000" min="0" />
                     <hr />
                     <div className="d-grid" id="search">
-                        <button className="btn btn-lg btn-outline-danger" onClick={getData}>
+                        <button className="btn btn-lg btn-outline-danger" onClick={()=>{
+                            flagToStore.current=true;
+                            getData();
+                        }}>
                             <Icon icon={faCalculator} />&nbsp;&nbsp;Calculate
                         </button>
                     </div>
@@ -186,7 +212,7 @@ function Home() {
 
 
                 <div className="my-card" id="card-3">
-                    <History StoredItems={storedData}/>
+                    <History StoredItems={storedData} historyControl ={viewPreviousResult}/>
                 </div>
             </div>
         </>
