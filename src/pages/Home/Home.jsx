@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faUsers, faGaugeHigh, faCalculator, faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight, faUsers, faGaugeHigh, faCalculator, faDatabase, faServer } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import InputGroup from "../../components/inputgroup/InputGroup";
 import InputGroupSelect from "../../components/inputgroupselect/InputGroupSelect";
@@ -27,7 +27,7 @@ function Home() {
     const [expansionPercentage, setExpansionPercentage] = useState(null);
     const [accessPoint, setAccessPoint] = useState(null);
     const [worstScenario, setWorstScenario] = useState(null);
-    const [storedData,setStoredData] = useState(null);
+    const [storedData, setStoredData] = useState(null);
     //#endregion
     //#region Get Values from Form
     function getData() {
@@ -38,9 +38,9 @@ function Home() {
         if (bandwidth.current.value <= 0 || bandwidth >= 10000)
             return
         debugger;
-        if(flagToStore.current&&result){
+        if (flagToStore.current && result) {
             SaveItemLocalStorage();
-            flagToStore.current=false;
+            flagToStore.current = false;
         }
         let data = {
             split: split.current.value,
@@ -52,13 +52,13 @@ function Home() {
 
     useEffect(() => {
         if (data !== undefined) {
-            const demo = async ()=>{
+            const demo = async () => {
                 await GetEquipment();
             }
             demo();
             QuantityUplinks();
         }
-        
+
     }, [data])
     //#endregion
     //#region Search optimum equipment for the solution
@@ -106,60 +106,62 @@ function Home() {
 
     }
     function CalculateWorstScenario(split) {
-        let splitr = split;
+        debugger;
+        let splitr = split.current.value;
+        splitr = UsersPerSplit(splitr)
         let worstScenario = 2500 / splitr;
         return worstScenario;
     }
     //#endregion
     //#region LocalStorage Management
-    async function CheckLocalStorage(){
+    async function CheckLocalStorage() {
         let localData = await localStorage.getItem("history");
-        if(localData===null||localData===""||localData.length===0)
+        if (localData === null || localData === "" || localData.length === 0)
             setStoredData([]);
         else
             setStoredData(JSON.parse(localData));
     }
-    async function SaveItemLocalStorage(){
+    async function SaveItemLocalStorage() {
         let stored = await localStorage.getItem("history");
         stored = JSON.parse(stored);
-        stored = stored?stored:[];
+        stored = stored ? stored : [];
         let toStore = data;
-        if(!result)
+        if (!result)
             return;
         toStore.result = result;
-        if(stored.length>=4){
+        if (stored.length >= 4) {
             stored.pop();
-            stored=[toStore].concat(stored);
-        }else{
+            stored = [toStore].concat(stored);
+        } else {
             stored.push(toStore);
         }
         setStoredData(stored);
-        await localStorage.setItem("history",JSON.stringify(stored));
+        await localStorage.setItem("history", JSON.stringify(stored));
     }
-    useEffect(()=>{
+    useEffect(() => {
         let isCanceled = false;
-        const checkLocalStorage = async()=>{
+        const checkLocalStorage = async () => {
             await CheckLocalStorage();
-            if(isCanceled){
+            if (isCanceled) {
                 console.log("Se canceló la ejecución de la función.");
             }
         }
         checkLocalStorage();
-        return()=>{
+        return () => {
             isCanceled = true;
         }
-    },[])
+    }, [])
 
-    function viewPreviousResult(historyItem){
+    function viewPreviousResult(historyItem) {
         setHistoryForm(historyItem);
         getData();
     }
-    function setHistoryForm(historyItem){
+    function setHistoryForm(historyItem) {
         split.current.value = historyItem.split;
         users.current.value = historyItem.users;
         bandwidth.current.value = historyItem.bandwidth;
     }
-    
+
     //#endregion
     return (
         <>
@@ -183,8 +185,8 @@ function Home() {
                         type="number" refId={bandwidth} step="10" max="10000" min="0" />
                     <hr />
                     <div className="d-grid" id="search">
-                        <button className="btn btn-lg btn-outline-danger" onClick={()=>{
-                            flagToStore.current=true;
+                        <button className="btn btn-lg btn-outline-danger" onClick={() => {
+                            flagToStore.current = true;
                             getData();
                         }}>
                             <Icon icon={faCalculator} />&nbsp;&nbsp;Calculate
@@ -206,13 +208,23 @@ function Home() {
                                 worstScenario={worstScenario} />
                         </>
                         : <>
+                            <h4>
+                                <Icon icon={faServer} />
+                                &nbsp; OLT calculator
+                            </h4>
+                            <hr />
+                            <div id="info-result">
+                                <p >
+                                    Please, fill the form on the left, to calculate the best equipment for your scenario
+                                </p>
+                            </div>
                         </>}
                 </div>
 
 
 
                 <div className="my-card" id="card-3">
-                    <History StoredItems={storedData} historyControl ={viewPreviousResult}/>
+                    <History StoredItems={storedData} historyControl={viewPreviousResult} />
                 </div>
             </div>
         </>
