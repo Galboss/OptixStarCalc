@@ -1,19 +1,14 @@
-/* .layout-basic{
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-} */
-:root{
-    --footer-space:150px;
+.layout-basic{
+    min-height: calc(100% - 72px);
 }
-
 .layout-body{
-    height: calc(100% - var(--footer-space));
-    display: flex;
-    flex-direction: column;
+    min-height: 100%;
 }
-
+.main-content{
+    min-height: 100%;
+}
 .main-component{
-    min-height: calc(100% - var(--footer-space));
-    margin: 18px 5dvw 0 5dvw;
+    overflow: auto;
+    min-height: calc(100% - 272px);
+    padding-bottom: 20px;
 }
